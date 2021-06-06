@@ -5,9 +5,12 @@ name: default
 steps:
   - name: greeting
     image: alpine
+    environment:
+    USERNAME:
+      from_secret: docker_username
     commands:
       - echo hellosa
       - echo world
-      - echo $KOPET
-      - echo $SEMPAK
+      - echo docker_username
+      - echo $docker_username
       - export
