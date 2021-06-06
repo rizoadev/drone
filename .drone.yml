@@ -13,7 +13,7 @@ steps:
       - git clone $GIT
       - rsync -rtv ./jorjoran_api/ .
       - rm -rf ./jorjoran_api
-      - ls
+      - mkdir ./app/serverdb
 
   - name: docker
     image: plugins/docker
@@ -30,5 +30,5 @@ steps:
       repo: registry.gitlab.com/viavallen/kentang-goreng/jorjoran-api
       tags: kontol
       registry: registry.gitlab.com
-      context: jorjoran_api
+      # context: jorjoran_api
       # dockerfile: jorjoran_api/Dockerfile
