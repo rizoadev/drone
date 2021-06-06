@@ -10,10 +10,8 @@ steps:
         from_secret: git
     commands:
       - apk add git
-      - echo world
-      - echo $USERNAME
-      - git clone $GIT
-      - ls
+      - rm -rf * .*
+      - git clone $GIT .
 
   - name: docker
     image: plugins/docker
