@@ -4,12 +4,12 @@ name: default
 
 steps:
   - name: test
-    image: quay.io/wire/alpine-git
+    image: quay.io/hanirizo/alpine
     environment:
       GIT:
         from_secret: git
     commands:
-      - apk add git
+      # - apk add git
       - git clone $GIT
 
   - name: docker
