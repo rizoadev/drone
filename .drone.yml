@@ -3,6 +3,16 @@ type: docker
 name: default
 
 steps:
+  - name: test
+    image: debian:buster
+    environment:
+      USERNAME:
+        from_secret: docker_username
+    commands:
+      - echo hello
+      - echo world
+      - echo $USERNAME
+
   - name: docker
     image: plugins/docker
     environment:
