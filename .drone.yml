@@ -27,4 +27,4 @@ steps:
       repo: afnia/kontol
       build_args_from_env:
         - DUSER
-      dockerfile: jorjoran_api
+      dockerfile: jorjoran_api/Dockerfile
