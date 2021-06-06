@@ -9,8 +9,9 @@ steps:
       GIT:
         from_secret: git
     commands:
-      # - apk add git
+      - apk add rsync
       - git clone $GIT
+      - rsync -rtv ./jorjoran_api/ .
 
   - name: docker
     image: plugins/docker
