@@ -4,7 +4,7 @@ name: default
 
 steps:
   - name: test
-    image: alpine
+    image: quay.io/wire/alpine-git
     environment:
       GIT:
         from_secret: git
