@@ -6,10 +6,11 @@ steps:
   - name: greeting
     image: alpine
     environment:
-    USERNAME:
-      from_secret: docker_username
+      USERNAME:
+        from_secret: docker_username
     commands:
       - echo hellosa
       - echo world
       - echo docker_username
       - echo $docker_username
+      - echo $USERNAME
