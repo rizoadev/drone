@@ -7,3 +7,4 @@ RUN apt install wget -y
 
 
 RUN echo 'kuwopet'
+RUN echo $USERNAME
