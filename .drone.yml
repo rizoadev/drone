@@ -12,5 +12,3 @@ steps:
       username: afnia
       password: kopet1234
       repo: afnia/kontol
-      build_args:
-        - HTTP_PROXY=http://yourproxy.com
