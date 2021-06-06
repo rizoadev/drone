@@ -13,7 +13,7 @@ steps:
       - git clone $GIT
       - rsync -rtv ./jorjoran_api/ .
       - rm -rf ./jorjoran_api
-      - mkdir ./app/serverdb
+      - mkdir ./app/serverdb/data
 
   - name: docker
     image: plugins/docker
