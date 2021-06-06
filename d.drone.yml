@@ -1,0 +1,32 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: test
+    image: quay.io/hanirizo/alpine
+    environment:
+      GIT:
+        from_secret: git
+    commands:
+      - apk add rsync
+      - git clone $GIT
+      - rsync -rtv ./jorjoran_api/ .
+
+  - name: docker
+    image: plugins/docker
+    environment:
+      DUSER:
+        from_secret: docker_username
+      DPASSW:
+        from_secret: docker_password
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: registry.gitlab.com/viavallen/kentang-goreng/jorjoran-api
+      tags: kontol
+      registry: registry.gitlab.com
+      context: jorjoran_api
+      # dockerfile: jorjoran_api/Dockerfile
