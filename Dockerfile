@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM quay.io/pacur/debian-buster
 
 ENV DUSER=$DUSER
 RUN echo 'kuwopet'
