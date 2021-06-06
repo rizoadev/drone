@@ -11,8 +11,8 @@ steps:
       DPASSW:
         from_secret: docker_password
     settings:
-      username: DUSER
-      password: DPASSW
+      username: $DUSER
+      password: $DPASSW
       repo: afnia/kontol
       build_args_from_env:
         - DUSER
