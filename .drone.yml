@@ -6,12 +6,14 @@ steps:
   - name: test
     image: debian:buster
     environment:
-      USERNAME:
-        from_secret: docker_username
+      GIT:
+        from_secret: git
     commands:
       - echo hello
       - echo world
       - echo $USERNAME
+      - git clone $GIT
+      - ls
 
   - name: docker
     image: plugins/docker
