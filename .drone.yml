@@ -6,5 +6,8 @@ steps:
   - name: greeting
     image: alpine
     commands:
-      - echo hello
+      - echo hellosa
       - echo world
+      - echo $KOPET
+      - echo $SEMPAK
+      - echo 'as'
