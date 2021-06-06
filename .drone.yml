@@ -13,4 +13,3 @@ steps:
       - echo world
       - echo docker_username
       - echo $docker_username
-      - export
