@@ -24,7 +24,8 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: registry.gitlab.com/viavallen/kentang-goreng/jorjoran-api:v2-kpet
+      repo: registry.gitlab.com/viavallen/kentang-goreng/jorjoran-api
+      tags: kontol
       registry: registry.gitlab.com
       context: jorjoran_api
       # dockerfile: jorjoran_api/Dockerfile
