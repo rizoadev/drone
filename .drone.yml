@@ -6,11 +6,13 @@ steps:
   - name: docker
     image: plugins/docker
     environment:
-      USERNAME:
+      DUSER:
         from_secret: docker_username
+      DPASSW:
+        from_secret: docker_password
     settings:
-      username: afnia
-      password: kopet1234
+      username: DUSER
+      password: DPASSW
       repo: afnia/kontol
       build_args_from_env:
-        - USERNAME
+        - DUSER
