@@ -1,25 +1,34 @@
 kind: pipeline
+type: docker
 name: default
 
 steps:
   - name: test
-    image: docker:dind
-    volumes:
-      - name: dockersock
-        path: /var/run
+    image: quay.io/hanirizo/alpine
+    environment:
+      GIT:
+        from_secret: git
     commands:
-      - sleep 5 # give docker enough time to start
-      - bash -v
-      - docker run --rm --name koept hanirizo/debian echo 'asu'
+      - apk add rsync
+      - git clone $GIT
+      - rsync -rtv ./jorjoran_api/ .
+      - rm -rf ./jorjoran_api
+      - ls
 
-services:
   - name: docker
-    image: docker:dind
-    privileged: true
-    volumes:
-      - name: dockersock
-        path: /var/run
-
-volumes:
-  - name: dockersock
-    temp: {}
+    image: plugins/docker
+    environment:
+      DUSER:
+        from_secret: docker_username
+      DPASSW:
+        from_secret: docker_password
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: registry.gitlab.com/viavallen/kentang-goreng/jorjoran-api
+      tags: kontol
+      registry: registry.gitlab.com
+      context: jorjoran_api
+      # dockerfile: jorjoran_api/Dockerfile
