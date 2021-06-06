@@ -10,8 +10,16 @@ steps:
         from_secret: git
     commands:
       - apk add git
-      - rm -rf * .*
-      - git clone $GIT .
+      - git clone $GIT
+
+  - name: kopet
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker ps -a
+      - cd jorjoran_api; ./build.sh
 
   - name: docker
     image: plugins/docker
