@@ -12,15 +12,6 @@ steps:
       - apk add git
       - git clone $GIT
 
-  - name: kopet
-    image: docker:dind
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
-    commands:
-      - docker ps -a
-      - cd jorjoran_api; ./build.sh
-
   - name: docker
     image: plugins/docker
     environment:
@@ -36,3 +27,4 @@ steps:
       repo: afnia/kontol
       build_args_from_env:
         - DUSER
+      dockerfile: jorjoran_api
