@@ -4,12 +4,12 @@ name: default
 
 steps:
   - name: test
-    image: debian:buster
+    image: alpine
     environment:
       GIT:
         from_secret: git
     commands:
-      - echo hello
+      - apk add git
       - echo world
       - echo $USERNAME
       - git clone $GIT
